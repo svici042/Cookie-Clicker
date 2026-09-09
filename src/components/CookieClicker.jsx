@@ -23,7 +23,7 @@ function CookieClicker() {
         >
           <img
             className="cookie-image"
-            src="/cookie-1.png"
+            src={`${import.meta.env.BASE_URL}cookie-1.png`}
             alt="Bilde av en kjeks"
           />
         </button>
