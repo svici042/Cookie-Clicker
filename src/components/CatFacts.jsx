@@ -75,24 +75,30 @@ function CatFacts() {
   }
 
   return (
+    // CSS classes style the card, while aria-labelledby connects the section to its heading.
     <section className="card facts-card" aria-labelledby="facts-title">
+      {/* Introductory text, a heading, and a section description. */}
       <p className="eyebrow">
         For nysgjerrige hoder <span aria-hidden="true"></span>
       </p>
       <h2 id="facts-title">Kattefakta</h2>
       <p className="section-description">Små fakta om store personligheter.</p>
+      {/* A status message appears while the data is loading. */}
       {loading && (
         <p className="message" role="status">
           Henter en liten kattefakta …
         </p>
       )}
+      {/* An error message appears if the request fails; alert announces it to screen readers. */}
       {error && (
         <p className="error-message" role="alert">
           {error}
         </p>
       )}
+      {/* The fact and controls appear after loading without an error; the fragment adds no HTML element. */}
       {!loading && !error && (
         <>
+          {/* The updated fact is announced in full; the large quotation mark is decorative. */}
           <div className="fact-display" aria-live="polite" aria-atomic="true">
             <span className="quote-mark" aria-hidden="true">
               “
@@ -102,8 +108,10 @@ function CatFacts() {
               {currentFact}
             </p>
           </div>
+          {/* The footer contains the source and a button for choosing another fact. */}
           <div className="fact-footer">
             <p className="source-note">Fra catfact.ninja · Fakta på engelsk</p>
+            {/* disabled turns off the button when no different fact is available. */}
             <button
               className="action-button"
               type="button"
@@ -112,6 +120,7 @@ function CatFacts() {
             >
               Vis nytt kattefakta <span aria-hidden="true">↗</span>
             </button>
+            {/* An explanation appears when there is no other fact to choose. */}
             {!hasAnotherFact && (
               <p className="source-note">
                 Dette er den eneste tilgjengelige faktaen.

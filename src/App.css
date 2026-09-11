@@ -8,6 +8,7 @@
   padding: 1.5rem 0 3rem;
 }
 
+/* The toolbar spans all grid columns; Flexbox separates the title and theme button. */
 .app-toolbar {
   grid-column: 1 / -1;
   display: flex;
@@ -15,6 +16,7 @@
   justify-content: space-between;
   gap: 1rem;
 }
+/* The site title is bold, and its inner span uses the accent color. */
 .app-wordmark {
   color: var(--text);
   font-size: 1rem;
@@ -24,6 +26,7 @@
 .app-wordmark > span {
   color: var(--accent);
 }
+/* The theme button arranges its content in a row; var() reads the theme's CSS variables. */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -39,14 +42,17 @@
   cursor: pointer;
   transition: var(--theme-transition);
 }
+/* :hover changes the appearance when the pointer is over the element. */
 .theme-toggle:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow-hover);
 }
+/* Theme icons sit side by side with a small gap. */
 .theme-toggle-icons {
   display: flex;
   gap: 2px;
 }
+/* Grid centers the icon inside a circle. */
 .theme-icon {
   display: grid;
   place-items: center;
@@ -55,10 +61,12 @@
   border-radius: 50%;
   transition: var(--theme-transition);
 }
+/* The active theme icon has a colored background. */
 .theme-icon.is-active {
   color: var(--on-accent);
   background-color: var(--accent);
 }
+/* Set the SVG icon size and the theme label's width and font. */
 .theme-icon svg {
   width: 19px;
   height: 19px;
@@ -69,6 +77,7 @@
   font-weight: 650;
 }
 
+/* Shared card styles; clamp() adjusts padding to the viewport width within defined limits. */
 .card {
   min-width: 0;
   padding: clamp(1.5rem, 3.5vw, 2.5rem);
@@ -80,10 +89,12 @@
   transition: var(--theme-transition);
 }
 
+/* Hovering highlights the card's border and shadow. */
 .card:hover {
   border-color: var(--border-strong);
   box-shadow: var(--shadow-hover);
 }
+/* Card headings share a font, with sizes that adapt to the viewport width. */
 .card h1, .card h2 {
   margin: 0;
   color: var(--text);
@@ -97,6 +108,7 @@
 .card h2 {
   font-size: clamp(2rem, 4vw, 2.6rem);
 }
+/* The small text above the heading uses uppercase letters with wider letter spacing. */
 .eyebrow {
   margin: 0 0 0.85rem;
   color: var(--accent);
@@ -105,6 +117,7 @@
   text-transform: uppercase;
   letter-spacing: 0.16em;
 }
+/* The description has a smaller font and space above it. */
 .section-description {
   margin: 0.65rem 0 0;
   font-size: 0.9rem;
@@ -116,12 +129,14 @@
   border-top: 3px solid var(--accent);
   text-align: center;
 }
+/* The cookie button and score are centered and stacked vertically. */
 .cookie-content {
   display: grid;
   justify-items: center;
   gap: 0.75rem;
   margin-top: 1rem;
 }
+/* aspect-ratio keeps the button square, border-radius rounds it, and the gradient creates a glow. */
 .cookie-button {
   display: grid;
   place-items: center;
@@ -136,6 +151,7 @@
   transition: var(--theme-transition), transform 160ms ease;
   -webkit-tap-highlight-color: transparent;
 }
+/* The background provides feedback when hovering or holding the button down. */
 .cookie-button:hover {
   border-color: var(--accent);
   background-color: var(--accent-soft);
@@ -143,6 +159,7 @@
 .cookie-button:active {
   background-color: var(--accent-soft);
 }
+/* The image fits the button width while keeping its proportions; drop-shadow follows its outline. */
 .cookie-image {
   display: block;
   width: 100%;
@@ -150,6 +167,7 @@
   filter: drop-shadow(var(--cookie-shadow));
   transition: transform 160ms ease;
 }
+/* Hovering rotates and enlarges the cookie; pressing shrinks the button. */
 .cookie-button:hover .cookie-image {
   transform: rotate(-5deg) scale(1.04);
 }
@@ -159,6 +177,7 @@
 .cookie-button:active .cookie-image {
   transform: rotate(3deg);
 }
+/* The score and its label align along the text baseline. */
 .score {
   display: flex;
   align-items: baseline;
@@ -166,6 +185,7 @@
   margin: 0;
   color: var(--accent);
 }
+/* Equal-width digits keep the score visually stable, while its label uses a smaller font. */
 .score strong {
   font-size: 3rem;
   font-weight: 650;
@@ -184,21 +204,25 @@
   border-top: 3px solid var(--secondary);
   animation-delay: 70ms;
 }
+/* The facts card's introductory text uses the secondary theme color. */
 .facts-card .eyebrow {
   display: flex;
   justify-content: space-between;
   color: var(--secondary);
 }
+/* flex: 1 lets the fact fill the available card height and pushes the footer down. */
 .fact-display {
   flex: 1;
   padding: 1rem 0 1.5rem;
 }
+/* A large decorative quotation mark sits above the fact text. */
 .quote-mark {
   display: block;
   height: 3.5rem;
   color: var(--secondary);
   font: 5rem Georgia, serif;
 }
+/* Set the fact's font and line height; long words can wrap to stay inside the card. */
 .fact-text {
   margin: 0;
   color: var(--text);
@@ -206,6 +230,7 @@
   overflow-wrap: anywhere;
   animation: appear 250ms ease both;
 }
+/* A border separates the footer, and the source text uses a smaller font. */
 .fact-footer {
   border-top: 1px solid var(--border);
   padding-top: 1rem;
@@ -215,6 +240,7 @@
   font-size: 0.72rem;
   color: var(--text-muted);
 }
+/* The fact button uses secondary theme colors and a separate hover color. */
 .fact-footer .action-button {
   color: var(--on-secondary);
   background: var(--secondary);
@@ -223,6 +249,7 @@
 .fact-footer .action-button:hover {
   background: var(--secondary-hover);
 }
+/* Add spacing around the extra footer note and status messages. */
 .fact-footer .source-note:last-child {
   margin: 0.75rem 0 0;
 }
@@ -235,12 +262,14 @@
   grid-column: 1 / -1;
   animation-delay: 140ms;
 }
+/* The heading and user counter align in a single row. */
 .users-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
+/* The user count appears in a rounded badge; nowrap keeps its text on one line. */
 .user-count {
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--border);
@@ -250,6 +279,7 @@
   font-size: 0.75rem;
   white-space: nowrap;
 }
+/* The list and form occupy two columns, with slightly more width given to the list. */
 .users-content {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
@@ -257,11 +287,13 @@
   margin-top: 1.5rem;
   align-items: start;
 }
+/* Remove the default list markers, padding, and margins. */
 .user-list {
   padding: 0;
   margin: 0;
   list-style: none;
 }
+/* Each user's avatar and details sit in a row with a dividing line below. */
 .user-list li {
   display: flex;
   align-items: center;
@@ -270,9 +302,11 @@
   border-bottom: 1px solid var(--border);
   animation: appear 300ms ease both;
 }
+/* The first list item needs no extra space above it. */
 .user-list li:first-child {
   padding-top: 0;
 }
+/* The initial is centered in a fixed-size badge that does not shrink in the flex row. */
 .user-avatar {
   display: grid;
   place-items: center;
@@ -283,16 +317,19 @@
   background: var(--accent-soft);
   font: 1.2rem Georgia, serif;
 }
+/* Every second user's avatar uses a different color. */
 .user-list li:nth-child(even) .user-avatar {
   color: var(--secondary);
   background: var(--secondary-soft);
 }
+/* The name and email are stacked vertically; long text can wrap onto multiple lines. */
 .user-details {
   display: grid;
   gap: 0.15rem;
   min-width: 0;
   overflow-wrap: anywhere;
 }
+/* The name is emphasized, while the email address uses a smaller font. */
 .user-details strong {
   color: var(--text);
   font-size: 0.9rem;
@@ -301,12 +338,14 @@
 .user-details span {
   font-size: 0.8rem;
 }
+/* Form elements are stacked vertically; the left border separates the form from the list. */
 .user-form {
   display: grid;
   gap: 0.9rem;
   border-left: 1px solid var(--border);
   padding-left: 2.5rem;
 }
+/* The form heading and description use smaller fonts and adjusted spacing. */
 .user-form h3 {
   margin: 0;
   color: var(--text);
@@ -316,15 +355,18 @@
   margin-top: -0.5rem;
   font-size: 0.8rem;
 }
+/* Each field's label and input are stacked vertically. */
 .form-field {
   display: grid;
   gap: 0.4rem;
 }
+/* Field labels are bold to make each input's purpose easier to identify. */
 label {
   color: var(--text);
   font-size: 0.8rem;
   font-weight: 650;
 }
+/* Inputs fill the available width and use shared theme colors with a rounded border. */
 input {
   min-width: 0;
   width: 100%;
@@ -336,9 +378,11 @@ input {
   border-radius: 9px;
   transition: var(--theme-transition);
 }
+/* Hovering changes the input border to the accent color. */
 input:hover {
   border-color: var(--accent);
 }
+/* The shared action button places its text and symbol at opposite ends. */
 .action-button {
   display: inline-flex;
   align-items: center;
@@ -355,6 +399,7 @@ input:hover {
   cursor: pointer;
   transition: var(--theme-transition), transform 150ms ease;
 }
+/* The button moves up on hover and slightly down when pressed. */
 .action-button:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
@@ -362,11 +407,13 @@ input:hover {
 .action-button:active {
   transform: translateY(1px);
 }
+/* Disabled buttons appear faded and do not move on hover. */
 .action-button:disabled {
   opacity: 0.65;
   cursor: default;
   transform: none;
 }
+/* Errors use the theme's error color; form errors have no default margins. */
 .error-message, .form-error {
   color: var(--error);
   font-size: 0.9rem;
@@ -374,6 +421,7 @@ input:hover {
 .form-error {
   margin: 0;
 }
+/* A minimum height reserves space for success messages to reduce form layout shifts. */
 .success-message {
   min-height: 1.3em;
   margin: 0;
@@ -381,6 +429,7 @@ input:hover {
   font-size: 0.8rem;
   overflow-wrap: anywhere;
 }
+/* A visible outline identifies the button or input focused through keyboard navigation. */
 button:focus-visible, input:focus-visible {
   outline: 3px solid var(--focus-ring);
   outline-offset: 4px;
@@ -394,6 +443,7 @@ button:focus-visible, input:focus-visible {
   transition: var(--theme-transition);
 }
 
+/* The element gradually fades in and moves up into place. */
 @keyframes appear {
   from {
     opacity: 0;
