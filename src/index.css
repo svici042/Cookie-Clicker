@@ -1,5 +1,8 @@
+/* Define shared CSS variables and default page styles on the HTML element. */
 :root {
+  /* Tell the browser to use light styling for native controls and scrollbars. */
   color-scheme: light;
+  /* Page backgrounds, text colors, and borders are reused through var() in App.css. */
   --bg: #f3f2f0;
   --surface: #fcfcfd;
   --surface-alt: #edf0f2;
@@ -7,34 +10,45 @@
   --text-muted: #606371;
   --border: #d9dbe1;
   --border-strong: #858996;
+  /* Primary colors cover buttons, hover states, soft backgrounds, and text on accent surfaces. */
   --accent: #85445e;
   --accent-hover: #6c334b;
   --accent-soft: #f1e5eb;
   --on-accent: #ffffff;
+  /* Secondary colors distinguish the facts card and alternate user avatars. */
   --secondary: #3f656d;
   --secondary-hover: #304f56;
   --secondary-soft: #e5eef0;
   --on-secondary: #ffffff;
+  /* Feature cards have their own backgrounds, and the cookie button has a soft glow. */
   --cookie-surface: #f8f3f6;
   --facts-surface: #f3f7f8;
   --cookie-glow: #eee0e7;
+  /* Status messages and keyboard focus use dedicated colors. */
   --success: #356750;
   --error: #a33145;
   --focus-ring: #8b4069;
+  /* Shadows add depth; the last two digits in each hex color control transparency. */
   --shadow: 0 8px 28px #25273608;
   --shadow-hover: 0 12px 32px #25273612;
   --cookie-shadow: 0 12px 10px #32202a30;
+  /* Reuse the same transition timing for color, border, and shadow changes. */
   --theme-transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  /* Set the default font, inherited text color, and page background. */
   font-family: 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
   color: var(--text-muted);
   background-color: var(--bg);
+  /* Avoid simulated font styles and request text rendering optimized for readability. */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  /* Give lines breathing room and smoothly transition the root element's theme colors. */
   line-height: 1.5;
   transition: var(--theme-transition);
 }
 
+/* Override the same color variables when JavaScript sets data-theme="dark" on the HTML element. */
 :root[data-theme='dark'] {
+  /* Native browser controls also switch to dark styling; shared typography stays unchanged. */
   color-scheme: dark;
   --bg: #1c1e25;
   --surface: #252831;
@@ -62,14 +76,17 @@
   --cookie-shadow: 0 12px 10px #0b0d1466;
 }
 
+/* Include padding and borders in each element's declared width and height. */
 * {
   box-sizing: border-box;
 }
+/* Remove the browser's default margin, set a minimum width, and fill at least the viewport height. */
 body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
 }
+/* Highlight selected text using the current theme's accent and contrasting text color. */
 ::selection {
   background: var(--accent);
   color: var(--on-accent);
